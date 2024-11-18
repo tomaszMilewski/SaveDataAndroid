@@ -9,15 +9,15 @@ import pl.milewski.save.models.Product
 
 @Dao
 interface ShoppingProductsDao {
-    @Query("SELECT * FROM product")
+    @Query("SELECT * FROM products")
     fun getAll(): Flow<List<Product>>
 
-    @Query("""SELECT * FROM product WHERE name LIKE :name LIMIT 1""")
+    @Query("""SELECT * FROM products WHERE name LIKE :name LIMIT 1""")
     fun findByName(name: String): Flow<Product>
 
     @Insert
     suspend fun insert(product: Product)
 
-    @Query("DELETE FROM product")
+    @Query("DELETE FROM products")
     suspend fun deleteAll()
 }
